@@ -1,0 +1,20 @@
+PODS:
+  - Cutaway (0.1.0)
+  - Expecta (1.0.0)
+  - Specta (1.0.1)
+
+DEPENDENCIES:
+  - Cutaway (from `../`)
+  - Expecta
+  - Specta
+
+EXTERNAL SOURCES:
+  Cutaway:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Cutaway: 1f1f07e5ea53b29ffef2776121b95f729f41b574
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
+  Specta: 097be314a75de103703a3bf9a529dc1a398509d7
+
+COCOAPODS: 0.37.2

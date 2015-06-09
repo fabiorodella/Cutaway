@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'Cutaway_Example', :exclusive => true do
+  pod "Cutaway", :path => "../"
+end
+
+target 'Cutaway_Tests', :exclusive => true do
+  pod "Cutaway", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
