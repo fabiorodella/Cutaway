@@ -30,7 +30,7 @@ The first step is to break your storyboard into smaller, feature-focused storybo
 
 ![Storyboard screenshot](https://github.com/fabiorodella/Cutaway/blob/master/Screenshots/ss_vc_placeholder.png)
 
-* Add a storyboard ID to the placeholder view controller in the following format: `cutaway.StoryboardNameWithoutExtension.DestinationViewControllerID` (the `cutaway` previx can be changed by calling `[UIStoryboard cutaway_setIdentifierPrefix:]`). 
+* Add a storyboard ID to the placeholder view controller in the following format: `cutaway.StoryboardNameWithoutExtension.DestinationViewControllerID` (the `cutaway` prefix can be changed by calling `[UIStoryboard cutaway_setIdentifierPrefix:]`). 
 
 ![Storyboard screenshot](https://github.com/fabiorodella/Cutaway/blob/master/Screenshots/ss_cutaway_id.png)
 
