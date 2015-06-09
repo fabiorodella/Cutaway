@@ -1,6 +1,6 @@
 # Cutaway
 
-[![CI Status](http://img.shields.io/travis/Fabio Rodella/Cutaway.svg?style=flat)](https://travis-ci.org/Fabio Rodella/Cutaway)
+[![CI Status](http://img.shields.io/travis/fabiorodella/Cutaway.svg?style=flat)](https://travis-ci.org/fabiorodella/Cutaway)
 [![Version](https://img.shields.io/cocoapods/v/Cutaway.svg?style=flat)](http://cocoapods.org/pods/Cutaway)
 [![License](https://img.shields.io/cocoapods/l/Cutaway.svg?style=flat)](http://cocoapods.org/pods/Cutaway)
 [![Platform](https://img.shields.io/cocoapods/p/Cutaway.svg?style=flat)](http://cocoapods.org/pods/Cutaway)
