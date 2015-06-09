@@ -82,7 +82,7 @@ describe(@"storyboard linking", ^{
         [mainViewController performSegueWithIdentifier:@"showSecondary"
                                                 sender:nil];
         
-        expect(navigationController.topViewController).after(1).to.beInstanceOf(NSClassFromString(@"RDLSecondaryViewController"));
+        expect(navigationController.topViewController).after(5).to.beInstanceOf(NSClassFromString(@"RDLSecondaryViewController"));
     });
     
     it(@"can present modally", ^{
@@ -100,9 +100,9 @@ describe(@"storyboard linking", ^{
         
         expect(navigationController.topViewController).after(1).to.beInstanceOf(NSClassFromString(@"RDLSecondaryViewController"));
         
-        UIViewController *firstChild = navigationController.topViewController.childViewControllers[0];
+        expect(navigationController.topViewController.childViewControllers).after(1).to.haveCountOf(1);
         
-        expect(firstChild).to.beInstanceOf(NSClassFromString(@"RDLEmbeddedViewController"));
+        expect(navigationController.topViewController.childViewControllers[0]).to.beInstanceOf(NSClassFromString(@"RDLEmbeddedViewController"));
     });
 });
 
