@@ -12,47 +12,13 @@
 
 static NSString *cutaway_identifierPrefix = @"cutaway";
 
-@implementation UIStoryboard (Cutaway)
+#pragma mark - Swizzling functions
 
-#pragma mark - Superclass methods
+static id cutaway_instantiateViewControllerWithIdentifier(id self, SEL _cmd, NSString *identifier);
+static id (*cutaway_instantiateViewControllerWithIdentifierIMP)(id self, SEL _cmd, NSString *identifier);
 
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        
-        Class class = [self class];
-        
-        SEL originalSelector = @selector(instantiateViewControllerWithIdentifier:);
-        SEL swizzledSelector = @selector(cutaway_instantiateViewControllerWithIdentifier:);
-        
-        Method originalMethod = class_getInstanceMethod(class, originalSelector);
-        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-        
-        BOOL didAddMethod =
-        class_addMethod(class,
-                        originalSelector,
-                        method_getImplementation(swizzledMethod),
-                        method_getTypeEncoding(swizzledMethod));
-        
-        if (didAddMethod) {
-            
-            class_replaceMethod(class,
-                                swizzledSelector,
-                                method_getImplementation(originalMethod),
-                                method_getTypeEncoding(originalMethod));
-        } else {
-            
-            method_exchangeImplementations(originalMethod, swizzledMethod);
-        }
-    });
-}
+static id cutaway_instantiateViewControllerWithIdentifier(id self, SEL _cmd, NSString *identifier) {
 
-#pragma mark - Swizzled methods
-
-- (id)cutaway_instantiateViewControllerWithIdentifier:(NSString *)identifier
-{
     if ([identifier hasPrefix:cutaway_identifierPrefix]) {
         
         NSArray *components = [identifier componentsSeparatedByString:@"."];
@@ -70,10 +36,48 @@ static NSString *cutaway_identifierPrefix = @"cutaway";
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName
                                                              bundle:nil];
         
-        return [storyboard instantiateViewControllerWithIdentifier:viewControllerId];
+        return cutaway_instantiateViewControllerWithIdentifierIMP(storyboard, _cmd, viewControllerId);
     }
     
-    return [self cutaway_instantiateViewControllerWithIdentifier:identifier];
+    return cutaway_instantiateViewControllerWithIdentifierIMP(self, _cmd, identifier);
+}
+
+#pragma mark - Category implementation
+
+@implementation UIStoryboard (Cutaway)
+
+#pragma mark - Superclass methods
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        
+        IMP imp = NULL;
+        IMP *store = (IMP *)&cutaway_instantiateViewControllerWithIdentifierIMP;
+        
+        SEL originalSelector = @selector(instantiateViewControllerWithIdentifier:);
+        
+        Method method = class_getInstanceMethod(self, originalSelector);
+        
+        if (method) {
+            
+            const char *type = method_getTypeEncoding(method);
+            
+            imp = class_replaceMethod(self, originalSelector, (IMP)cutaway_instantiateViewControllerWithIdentifier, type);
+            
+            if (!imp) {
+                
+                imp = method_getImplementation(method);
+            }
+        }
+        
+        if (imp) {
+            
+            *store = imp;
+        }
+    });
 }
 
 #pragma mark - Class methods
