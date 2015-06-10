@@ -22,7 +22,7 @@ If you still need to support iOS 7+, fret not, because now there is **Cutaway**.
 
 The first step is to break your storyboard into smaller, feature-focused storyboards as needed. Then, whenever you need a segue to another storyboard you'd do the following:
 
-* Make sure your destination scene has a meaningful storyboard ID. Also, do use the period symbol (`.`) in the identifier. 
+* Make sure your destination scene has a meaningful storyboard ID. Also, don't use the underscore symbol (`_`) in the identifier. 
 
 ![Storyboard screenshot](https://github.com/fabiorodella/Cutaway/blob/master/Screenshots/ss_destination_id.png)
 
@@ -30,7 +30,7 @@ The first step is to break your storyboard into smaller, feature-focused storybo
 
 ![Storyboard screenshot](https://github.com/fabiorodella/Cutaway/blob/master/Screenshots/ss_vc_placeholder.png)
 
-* Add a storyboard ID to the placeholder view controller in the following format: `cutaway.StoryboardNameWithoutExtension.DestinationViewControllerID` (the `cutaway` prefix can be changed by calling `[UIStoryboard cutaway_setIdentifierPrefix:]`). 
+* Add a storyboard ID to the placeholder view controller in the following format: `cutaway_StoryboardNameWithoutExtension_DestinationViewControllerID` (the `cutaway` prefix can be changed by calling `[UIStoryboard cutaway_setIdentifierPrefix:]`). 
 
 ![Storyboard screenshot](https://github.com/fabiorodella/Cutaway/blob/master/Screenshots/ss_cutaway_id.png)
 

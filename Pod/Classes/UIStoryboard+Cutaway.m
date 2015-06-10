@@ -21,7 +21,7 @@ static id cutaway_instantiateViewControllerWithIdentifier(id self, SEL _cmd, NSS
 
     if ([identifier hasPrefix:cutaway_identifierPrefix]) {
         
-        NSArray *components = [identifier componentsSeparatedByString:@"."];
+        NSArray *components = [identifier componentsSeparatedByString:@"_"];
         
         NSAssert([components count] == 3, @"Cutaway storyboard identifiers should be in the format '%@.StoryboardName.SceneID'", cutaway_identifierPrefix);
         
