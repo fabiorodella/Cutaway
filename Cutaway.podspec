@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Cutaway"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Create segues between different storyboards."
   s.description      = <<-DESC
                        **Cutaway** provides an easy way to link scenes in different storyboards through regular segues (no custom segues needed).

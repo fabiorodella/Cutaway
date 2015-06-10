@@ -1,5 +1,5 @@
 PODS:
-  - Cutaway (0.1.0)
+  - Cutaway (0.1.1)
   - Expecta (1.0.0)
   - Specta (1.0.1)
 
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Cutaway: 1f1f07e5ea53b29ffef2776121b95f729f41b574
+  Cutaway: 3e7ab449e13cc7d73d08e357a5adb182417a41c7
   Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
   Specta: 097be314a75de103703a3bf9a529dc1a398509d7
 

@@ -5,18 +5,20 @@
 [![License](https://img.shields.io/cocoapods/l/Cutaway.svg?style=flat)](http://cocoapods.org/pods/Cutaway)
 [![Platform](https://img.shields.io/cocoapods/p/Cutaway.svg?style=flat)](http://cocoapods.org/pods/Cutaway)
 
-Even for moderately complex apps, it soon becomes clear that having a single storyboard file for everything gets unmanageable pretty quickly. As a solution, we can have multiple storyboards and instantiate view controllers manually, yet not having to write code to perform transitions is pretty great. 
-
-The best of both worlds would be to have segues that can cross storyboard boundaries. Xcode 7 (announced at WWDC 2015) allows just that, but it seems likely that this feature will be limited to iOS 9. 
-
-If you still need to support iOS 7+, fret not, because now there is **Cutaway**. The goals for this project are:
+**Cutaway** allows you to easily create segues that link to view controllers in other storyboard files, helping you to keep your storyboards manageable and focused. The goals for the project were:
 
 * **The storyboard is the source of truth**: all information for segue destinations is available in the storyboard file itself.
 * **No segue subclassing**: any segue type can link to a different storyboard (including `embed` segues, which can't be subclassed).
 * **No child view controllers**: the destination view controller you get in a segue is exactly what you expected, not wrapped by any container.
 * **Transparently support unwind segues**.
 
-**Cutaway** achieves these, and while not 100% future-proof (it uses method swizzling in the `UIStoryboard` class), it tries to do this in the least intrusive way possible. Once you're ready to migrate to iOS 9 exclusively, all you need to do is replace the placeholder view controllers with native storyboard references and reconnect your segues.
+## Motivation
+
+Even for moderately complex apps, it soon becomes clear that having a single storyboard file for everything gets unmanageable pretty quickly. As a solution, we can have multiple storyboards and instantiate view controllers manually, yet not having to write code to perform transitions is pretty great. 
+
+The best of both worlds would be to have segues that can cross storyboard boundaries. Xcode 7 (announced at WWDC 2015) allows just that, but it seems likely that this feature will be limited to iOS 9. **Cutaway** allows you to benefit from the same functionality while still supporting devices running iOS 7+. 
+
+While not 100% future-proof (it uses method swizzling in the `UIStoryboard` class), **Cutaway** tries to do things in the least intrusive way possible. Once you're ready to migrate to iOS 9 exclusively, all you need to do is replace the placeholder view controllers with native storyboard references and reconnect your segues.
 
 ## Usage
 
